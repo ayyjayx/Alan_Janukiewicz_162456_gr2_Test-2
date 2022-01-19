@@ -1,58 +1,41 @@
-import java.time.LocalDate;
 import java.util.ArrayList;
-
-public class Klient implements Comparable<Klient>, Cloneable {
-    private String nazwa;
-    private LocalDate dataZakupy;
-    private double rachunek;
-
-    public Klient(String nazwa, LocalDate dataZakupy, double rachunek)
-    {
-        this.nazwa = nazwa;
-        this.dataZakupy = dataZakupy;
-        this.rachunek = rachunek;
-    }
-
-    public String getNazwa(){
-        return this.nazwa;
-    }
-
-    public LocalDate getDataZakupy(){
-        return this.dataZakupy;
-    }
-
-    public double getRachunek(){
-        return this.rachunek;
-    }
-
-    public void setNazwa(String nazwa){
-        this.nazwa = nazwa;
-    }
-
-    public void setDataZakupy(LocalDate dataZakupy){
-        this.dataZakupy = dataZakupy;
-    }
-
-    public void setRachunek(double rachunek){
-        this.rachunek = rachunek;
-    }
-
-    public int compareTo(Klient other) {return this.nazwa.compareTo(other.nazwa)+this.dataZakupy.compareTo(other.dataZakupy)+this.rachunek.compareTo(other.rachunek); }
-    public String toString()
-    {
-        String c = "";
-        c+=getClass().getName()+"Nazwa= " + this.nazwa + " data zakupu= " + this.dataZakupy + " rachunek= " + this.rachunek + "\n";
-        return c;
-    }
-}
-
-
-public class ObsługaKlienta {
-    static double procentRabatu;
-    private ArrayList<Klient>;
-}
-
+import java.time.LocalDate;
+import java.util.Collections;
 
 public class Main{
+    public static void main(String[] args){
+        ArrayList<Klient> grupa = new ArrayList<Klient>();
 
+
+        LocalDate data1 = LocalDate.of(2001, 3, 6);
+        LocalDate data2 = LocalDate.of(2002, 5, 13);
+        LocalDate data3 = LocalDate.of(2003, 6, 25);
+
+        Klient k1 = new Klient("Alan", data1, 103.57);
+        Klient k2 = new Klient("Mateusz", data1, 98.54);
+        Klient k3 = new Klient("Kacper", data3, 14.90);
+        Klient k4 = new Klient("Kuba", data2, 14.90);
+        Klient k5 = new Klient("Kuba", data3, 1003.78);
+
+        grupa.add(k1);
+        grupa.add(k2);
+        grupa.add(k3);
+        grupa.add(k4);
+        grupa.add(k5);
+
+        System.out.println("Grupy przed sortowaniem: \n");
+
+        for(int i=0; i<grupa.size(); i++)
+        {
+            System.out.println(grupa.get(i));
+        }
+
+        Collections.sort(grupa);
+        System.out.println("Grupy po sortowaniu: \n");
+        for(int i=0; i<grupa.size(); i++)
+        {
+            System.out.println(grupa.get(i));
+        }
+
+    }
 }
